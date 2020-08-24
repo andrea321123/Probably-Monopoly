@@ -1,11 +1,13 @@
 // CircularList.h
-// Version 1.1
+// Version 1.2
 // Implements a circular list used for chance and community chest cards
 
 #ifndef PROBABLY_MONOPOLY_CIRCULARLIST_H
 #define PROBABLY_MONOPOLY_CIRCULARLIST_H
 
 #include <vector>
+#include <random>
+#include <string>
 
 // enum declarations
 enum CardsEffect {        // where the cards could move the player
@@ -27,6 +29,10 @@ struct Node {
 };
 
 struct CircularList {
+    // seed for random generation
+    std::random_device rd;
+    std::mt19937* g;
+
     std::vector <CardsEffect> cardValues;   // some cards can move the player to a certain square
     Node* firstCard;    // link to the first card
     int drawnCards;     // cards already drawn
@@ -44,6 +50,12 @@ struct CircularList {
 
     // push the go to jail card in the deck (after it's used)
     void pushJailCard();
+
+    // returns the size of the list
+    int size();
+
+    // returns a string with the values of the cards
+    std::string toString();
 };
 
 #endif //PROBABLY_MONOPOLY_CIRCULARLIST_H

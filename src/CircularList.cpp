@@ -1,21 +1,15 @@
 // CircularList.cpp
-// Version 1.1
+// Version 1.2
 //
 
 #include "CircularList.h"
 
 #include <algorithm>
-#include <cstdlib>
-#include <ctime>
-
-// private functions
-int randomGeneration(int i) {
-    return std::rand()%i;
-}
+#include <random>
 
 CircularList::CircularList(std::vector <CardsEffect> cardValues) {
-    // generating seed for random generation
-    std::srand(unsigned(std::time(0)));
+    // initializing seed
+    g = new std::mt19937(rd());
 
     // variables initialization
     CircularList::cardValues = cardValues;
@@ -38,7 +32,7 @@ CircularList::CircularList(std::vector <CardsEffect> cardValues) {
 }
 
 void CircularList::shuffle() {
-    std::random_shuffle(cardValues.begin(), cardValues.end(), randomGeneration);      // we first shuffle the deck
+    std::shuffle(cardValues.begin(), cardValues.end(), *g);      // we first shuffle the deck
 
     // then we copy the shuffled vector into the list
     Node* tmp = firstCard;
@@ -98,4 +92,25 @@ void CircularList::pushJailCard() {
     jailCard->link = firstCard;
     jailInDeck = true;
     drawnCards++;   // since out of jail is considered already used
+}
+
+int CircularList::size() {
+    int oneLessCard;    // because go to jail card could not be in the deck
+    if (jailInDeck)
+        oneLessCard = 0;
+    else
+        oneLessCard = -1;
+
+    return cardValues.size() - oneLessCard;
+}
+
+std::string CircularList::toString() {
+    std::string ret = "";
+    Node* tmp = firstCard;
+
+    for (int i = 0; i < size(); i++) {
+        ret += std::to_string(tmp->value) + " ";
+        tmp = tmp->link;
+    }
+    return ret + "\n";
 }
