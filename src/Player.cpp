@@ -1,5 +1,5 @@
 // Player.cpp
-// Version 1.0
+// Version 1.1
 //
 
 #include "Player.h"
@@ -19,6 +19,10 @@ int Player::move(int steps) {
 }
 
 int Player::move(CardsEffect square) {
+    if (square == THREE_STEPS_BEHIND) {
+        return move(-3);
+    }
+
     position = cardToPosition[square];
     board[position]++;
     return position;

@@ -1,5 +1,5 @@
 // CircularList.h
-// Version 1.2
+// Version 1.3
 // Implements a circular list used for chance and community chest cards
 
 #ifndef PROBABLY_MONOPOLY_CIRCULARLIST_H
@@ -19,7 +19,8 @@ enum CardsEffect {        // where the cards could move the player
     PALL_MALL,
     MARYLEBONE_STATION,
     TRAFALGAR_SQUARE,
-    MAYFAIR
+    MAYFAIR,
+    THREE_STEPS_BEHIND
 };
 
 // struct declarations
