@@ -1,11 +1,12 @@
 // cards.h
-// Version 1.0
-// Definition of communityChestVector and chanceVector
+// Version 1.1
+// Definition of community chest and chance information
 
 #ifndef PROBABLY_MONOPOLY_CARDS_H
 #define PROBABLY_MONOPOLY_CARDS_H
 
 #include <vector>
+#include <unordered_set>
 #include "CircularList.h"
 
 std::vector <CardsEffect> communityChestVector {
@@ -27,5 +28,7 @@ std::vector <CardsEffect> chanceVector {
         NOTHING,NOTHING,NOTHING,NOTHING,
         NOTHING,NOTHING,NOTHING,NOTHING,
 };
+std::unordered_set <int> chancePosition({7, 22, 36});
+std::unordered_set <int> communityChestPosition({2, 17, 33});
 
 #endif //PROBABLY_MONOPOLY_CARDS_H

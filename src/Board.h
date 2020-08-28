@@ -1,5 +1,5 @@
 // Board.h
-// Version 1.1
+// Version 1.2
 // Implements the whole board with all the players
 
 #ifndef PROBABLY_MONOPOLY_BOARD_H
@@ -10,7 +10,7 @@
 #include <mutex>
 #include "CircularList.h"
 
-
+const int JAIL = 10;
 
 class Board {
 private:
@@ -20,7 +20,7 @@ private:
     std::mutex mutex;
 
 
-    void singlePlay(unsigned long long int turns);
+    void singlePlay(unsigned long long int turns, SimulationResult* results);
 
 public:
     Board(int playersNumber);
