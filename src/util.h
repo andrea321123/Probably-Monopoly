@@ -1,5 +1,5 @@
 // util.h
-// Version 1.0
+// Version 1.2
 //
 
 #ifndef PROBABLY_MONOPOLY_UTIL_H
@@ -10,7 +10,7 @@
 
 std::unordered_map <CardsEffect, int> cardToPosition = {
         {GO, 0},
-        {GOTO_JAIL, 30},
+        {GOTO_JAIL, 10},
         {OLD_KENT_ROAD, 19},
         {PALL_MALL, 24},
         {MARYLEBONE_STATION, 5},
