@@ -1,5 +1,5 @@
 // Board.cpp
-// Version 1.3
+// Version 1.4
 //
 
 #include "Board.h"
@@ -66,12 +66,18 @@ void Board::singlePlay(unsigned long long turns, SimulationResult* result) {
             if (doubleRollStreak == 3 && dices.doubleRoll()) {
                 player.move(JAIL);
                 inJail = true;
-                continue;
+                break;
             }
 
             // move the player and check if he goes in a special square
             player.move(diceValue);
 
+            // if we went to square 30, go to jail
+            if (player.position == 30) {
+                player.move(JAIL);
+                inJail = true;
+                break;
+            }
 
             // start of the critical section
             mutex.lock();
