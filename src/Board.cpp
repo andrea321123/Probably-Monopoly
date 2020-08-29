@@ -1,5 +1,5 @@
 // Board.cpp
-// Version 1.4
+// Version 1.5
 //
 
 #include "Board.h"
@@ -72,15 +72,17 @@ void Board::singlePlay(unsigned long long turns, SimulationResult* result) {
             // move the player and check if he goes in a special square
             player.move(diceValue);
 
+            // start of the critical section
+            mutex.lock();
+
             // if we went to square 30, go to jail
             if (player.position == 30) {
+                result->board[player.position]++;
                 player.move(JAIL);
                 inJail = true;
                 break;
             }
-
-            // start of the critical section
-            mutex.lock();
+            
             // if he goes on chance square
             if (chancePosition.find(player.position) != chancePosition.end())
                 drawCard(&chance, &player, &ownOutOfJail, &inJail);

@@ -1,8 +1,9 @@
 // main.cpp
-// Version 1.0
+// Version 1.1
 //
 
 #include <iostream>
+#include "Board.h"
 
 const int MIN_ARGUMENTS = 2;    // minimum number of arguments needed
 
