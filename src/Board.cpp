@@ -1,5 +1,5 @@
 // Board.cpp
-// Version 1.5
+// Version 1.6
 //
 
 #include "Board.h"
@@ -80,6 +80,7 @@ void Board::singlePlay(unsigned long long turns, SimulationResult* result) {
                 result->board[player.position]++;
                 player.move(JAIL);
                 inJail = true;
+                mutex.unlock();
                 break;
             }
             
