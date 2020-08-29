@@ -15,4 +15,6 @@ add_executable(Probably_Monopoly src/main.cpp
         src/Player.h
         src/Board.cpp
         src/Board.h
-        src/SimulationResult.h src/cards.h)
+        src/SimulationResult.h
+        src/cards.h
+        src/squareToName.h src/squareToName.cpp)

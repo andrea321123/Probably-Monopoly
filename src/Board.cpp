@@ -1,5 +1,5 @@
 // Board.cpp
-// Version 1.2
+// Version 1.3
 //
 
 #include "Board.h"
@@ -85,6 +85,7 @@ void Board::singlePlay(unsigned long long turns, SimulationResult* result) {
 
             // we update simulation result
             result->board[player.position]++;
+            result->dice[diceValue]++;
 
             mutex.unlock();     // end of the critical section
         }
