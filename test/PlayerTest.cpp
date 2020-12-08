@@ -1,5 +1,5 @@
 // PlayerTest.cpp
-// Version 1.0
+// Version 1.1
 // Test of Player class
 
 #include "catch.hpp"
@@ -32,10 +32,4 @@ TEST_CASE("Player movement test by CardsEffect", "[player]"){
     REQUIRE (test.position == 13);
     test.move(1);
     REQUIRE (test.position == 14);
-
-    // test when player's position goes over 39
-    test.move(GOTO_JAIL);
-    REQUIRE (test.position == 30);
-    test.move(10);
-    REQUIRE (test.position == 0);
 }
